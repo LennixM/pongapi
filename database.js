@@ -4,7 +4,6 @@ const sequelize = new Sequelize('postgres://vvqvjmfhcoayyq:d0cf4087c61c8ab596ea6
 
 const User = sequelize.define('user', {
   username: Sequelize.STRING,
-  birthday: Sequelize.DATE
 });
 
 sequelize.sync();

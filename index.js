@@ -14,11 +14,12 @@ router.get('/getTudorsSexualPreferences', function(req, res) {
 })
 
 router.get('/getFriends', function(req, res) {
-    var users = User.findById();
+    var users = User.findById()
 });
 
-router.post('/newUser', function(req, res) {
-    User.create(req)
+router.get('/newUser', function(req, res) {
+    User.create("Tudor")
+    res.send("Added")
 });
 
 app.use('/api', router);
