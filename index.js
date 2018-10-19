@@ -9,6 +9,10 @@ var port = process.env.PORT || 8080;
 
 var router = express.Router();
 
+router.get('/getTudorsSexualPreferences', function(req, res) {
+  res.json({message: "tudor likes men, what a faggot"})
+})
+
 router.get('/getFriends', function(req, res) {
     var users = User.findById();
 });
