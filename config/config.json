@@ -14,13 +14,19 @@
     "password": "d0cf4087c61c8ab596ea690b4695b0f3e4daf164d052635477db919c6bae89f1",
     "database": "ddokpkuthcpr68",
     "host": "ec2-54-217-214-201.eu-west-1.compute.amazonaws.com",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "dialectOptions": {
+        "ssl": true
+    }
   },
   "production": {
     "username": "vvqvjmfhcoayyq",
     "password": "d0cf4087c61c8ab596ea690b4695b0f3e4daf164d052635477db919c6bae89f1",
     "database": "ddokpkuthcpr68",
     "host": "ec2-54-217-214-201.eu-west-1.compute.amazonaws.com",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "dialectOptions": {
+        "ssl": true
+    }
   }
 }
