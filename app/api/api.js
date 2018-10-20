@@ -2,21 +2,29 @@ var express = require('express');
 var router = express.Router();
 var model = require('../../models/index');
 
-// router.get('/getUsers', function(req, res) {
-//     model.User.findAll().then(
-//         users => {
-//             res.json({users: users})
-//         }
-//     )
-// });
+router.get('/getUsers', function(req, res) {
+    model.User.findAll().then(
+        users => {
+            res.json({users: users})
+        }
+    )
+});
 
-// router.get('/getUserRelations', function(req, res) {
-//     model.UserRelation.findAll().then(
-//         users => {
-//             res.json({users: users})
-//         }
-//     )
-// });
+router.get('/getUserById/:id', function(req, res) {
+    model.User.findOne({
+        where: {
+            id: req.params.id
+        }
+    }).then(user => res.json({user: user}))
+})
+
+router.get('/getUserRelations', function(req, res) {
+    model.UserRelation.findAll().then(
+        users => {
+            res.json({users: users})
+        }
+    )
+});
 
 router.post('/newUser', function(req, res) {
     model.User.create(req.body).then(user => model.User.findAll().then(
