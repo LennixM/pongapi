@@ -9,8 +9,9 @@ module.exports = (sequelize, DataTypes) => {
     twitter: DataTypes.STRING,
     linkedin: DataTypes.STRING
   }, {});
+
   User.associate = function(models) {
-    // associations can be defined here
   };
+
   return User;
 };
