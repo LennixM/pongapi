@@ -8,7 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     instagram: DataTypes.BOOLEAN,
     twitter: DataTypes.BOOLEAN,
     snapchat: DataTypes.BOOLEAN,
-    linkedin: DataTypes.BOOLEAN
+    linkedin: DataTypes.BOOLEAN,
+    bidirectional: DataTypes.BOOLEAN
   }, {});
 
   UserRelation.associate = function(models) {
