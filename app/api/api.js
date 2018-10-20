@@ -46,19 +46,12 @@ router.get('/getFriends/:id', function(req, res) {
 })
 
 router.post('/newUserRelation', function(req, res) {
-    bidirectional = req.body.bidirectional
-    delete req.body["bidirectional"]
-    if (bidirectional === true) {
-        model.UserRelation.create(req.body)
-        var json = req.body
-        var temp1 = json.user1
-        json.user1 = json.user2
-        json.user2 = temp1
-        model.UserRelation.create(json)
-    }
-    else {
-        model.UserRelation.create(req.body)
-    }
+        model.UserRelation.create(req.body).then(user => res.json(user));
+        // // var json = req.body
+        // // var temp1 = json.user1
+        // // json.user1 = json.user2
+        // // json.user2 = temp1
+        // model.UserRelation.create(req.body)
 })
  
 module.exports = router;
