@@ -34,12 +34,11 @@ router.post('/updateUserById/:id', function(req, res) {
 })
 
 router.post('/newUser', function(req, res) {
-    model.User.create(req.body).then(user => res.json(model.User.findOne({
+    model.User.create(req.body).then(user => model.User.findOne({
         where: {
             id: user.id
         }
-    })))
-});
+    }).then(user => res.json(user)))});
 
 router.get('/getFriends/:id', function(req, res) {
     model.UserRelation.findAll({
