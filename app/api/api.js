@@ -26,12 +26,19 @@ router.get('/getUserRelations', function(req, res) {
     )
 });
 
+router.post('/updateUserById/:id', function(req, res) {
+  model.User.update(
+    req.body,
+    { where: { id: req.params.id } }
+  )
+})
+
 router.post('/newUser', function(req, res) {
-    model.User.create(req.body).then(user => model.User.findAll().then(
-        users => {
-            res.json({users: users})
+    model.User.create(req.body).then(user => res.json(model.User.findOne({
+        where: {
+            id: user.id
         }
-    ))
+    })))
 });
 
 router.get('/getFriends/:id', function(req, res) {
