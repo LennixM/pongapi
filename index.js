@@ -1,30 +1,25 @@
-import {User} from database
 
-var express    = require('express');
-var app        = express();
-var bodyParser = require('body-parser');
+const express = require('express');
+const app = express();
+const db = require("./models");
+const bodyParser = require('body-parser');
+const api = require("./app/api/api");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use('/api', router);
 
 var port = process.env.PORT || 8080;
 
 var router = express.Router();
 
-router.get('/getTudorsSexualPreferences', function(req, res) {
-  res.json({message: "tudor likes men, what a faggot"})
-})
+api(app, db);
 
-router.get('/getFriends', function(req, res) {
-    var users = User.findById()
+
+const sequelize = new Sequelize('postgres://vvqvjmfhcoayyq:d0cf4087c61c8ab596ea690b4695b0f3e4daf164d052635477db919c6bae89f1@ec2-54-217-214-201.eu-west-1.compute.amazonaws.com:5432/ddokpkuthcpr68');
+
+db.sequelize.sync().then( () => {
+  app.listen(port, () => 
+    console.log("App listening on port 8080!")
+  );
 });
-
-router.get('/newUser', function(req, res) {
-    User.create("Tudor")
-    res.send("Added")
-});
-
-app.use('/api', router);
-
-app.listen(port);
-console.log('Magic happens on port ' + port);
